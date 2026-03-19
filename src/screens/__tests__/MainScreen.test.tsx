@@ -11,7 +11,7 @@ function renderWithItems(items: GroceryItem[]) {
   );
   return render(
     <GroceryProvider>
-      <MainScreen />
+      <MainScreen onAdd={() => {}} />
     </GroceryProvider>
   );
 }

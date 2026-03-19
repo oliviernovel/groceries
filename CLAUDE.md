@@ -1,6 +1,6 @@
 # Grocery List App — Project State
 
-## Current phase: Phase 4 complete (Main screen — Purchased list)
+## Current phase: Phase 5 complete (Add screen)
 
 ## Stack
 - React 19 + TypeScript + Vite
@@ -19,7 +19,7 @@
 ```
 src/
   main.tsx          -- Entry point
-  App.tsx           -- GroceryProvider + Header + MainScreen
+  App.tsx           -- GroceryProvider + Header + screen router (main | add)
   App.css           -- Global styles: CSS vars, reset, .app container, notebook effect
   index.css         -- Minimal body reset
   types.ts          -- GroceryItem interface, PurchasedSortMode type
@@ -30,8 +30,8 @@ src/
       frequency.test.ts         -- 16 tests (all passing)
   store/
     storage.ts                  -- GroceryState type, saveState(), loadState(), seedData()
-    grocery-reducer.ts          -- groceryReducer + GroceryAction type (CHECK_ITEM, UNCHECK_ITEM, DELETE_ITEM, SET_SORT_MODE; stubs for rest)
-    grocery-context.tsx         -- GroceryProvider, useGroceries hook
+    grocery-reducer.ts          -- groceryReducer + GroceryAction type (all actions implemented)
+    grocery-context.tsx         -- GroceryProvider, useGroceries hook (empty initial state)
     __tests__/
       grocery-reducer.test.ts   -- 16 tests (all passing)
       storage.test.ts           -- 6 tests (all passing)
@@ -42,21 +42,25 @@ src/
     BuyList.tsx                 -- Sorted to-buy list + empty state
     PurchasedItem.tsx           -- Checked item (checkbox + name + c/Nd badge + delete btn)
     PurchasedList.tsx           -- Sort toggle (frequency/alphabetical) + purchased items + empty state
+    Fab.tsx / Fab.css           -- Floating "+" button
+    AddItemRow.tsx              -- Row in add screen (name + green/grey "+" button)
     __tests__/
       PurchasedList.test.tsx    -- 5 tests (all passing)
   screens/
-    MainScreen.tsx / MainScreen.css  -- To Buy + Purchased sections
+    MainScreen.tsx / MainScreen.css  -- To Buy + Purchased sections + FAB
+    AddScreen.tsx / AddScreen.css    -- Search input + item list + new item row
     __tests__/
       MainScreen.test.tsx       -- 11 tests (all passing)
+      AddScreen.test.tsx        -- 8 tests (all passing)
 ```
 
-## What's next: Phase 5
-- FAB opens add screen
-- CREATE_AND_ADD, ADD_TO_BUY actions in the reducer
-- Components: Fab, AddItemRow, AddScreen
-- Remove seed data; empty initial state if no localStorage data
+## What's next: Phase 6
+- Add menu button (three-dot icon) to Header
+- Create OrderScreen with drag-and-drop reordering
+- REORDER action in the reducer
+- Wire up main → order → main navigation in App.tsx
 
 ## Running
-- `pnpm dev` — dev server (shows To Buy + Purchased lists with seed data)
-- `pnpm test` — run all tests with Vitest (51 passing)
+- `pnpm dev` — dev server (empty initial state; FAB opens add screen)
+- `pnpm test` — run all tests with Vitest (60 passing)
 - `pnpm build` — production build

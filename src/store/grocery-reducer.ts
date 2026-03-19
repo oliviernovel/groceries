@@ -1,4 +1,4 @@
-import type { PurchasedSortMode } from '../types';
+import type { GroceryItem, PurchasedSortMode } from '../types';
 import type { GroceryState } from './storage';
 import { pruneHistory } from '../utils/frequency';
 
@@ -44,6 +44,25 @@ export function groceryReducer(state: GroceryState, action: GroceryAction): Groc
     }
     case 'SET_SORT_MODE': {
       return { ...state, sortMode: action.mode };
+    }
+    case 'CREATE_AND_ADD': {
+      const maxOrder = state.items.reduce((max, item) => Math.max(max, item.purchaseOrder), -1);
+      const newItem: GroceryItem = {
+        id: crypto.randomUUID(),
+        name: action.name.trim(),
+        purchaseHistory: [],
+        purchaseOrder: maxOrder + 1,
+        bought: false,
+      };
+      return { ...state, items: [...state.items, newItem] };
+    }
+    case 'ADD_TO_BUY': {
+      return {
+        ...state,
+        items: state.items.map(item =>
+          item.id === action.id ? { ...item, bought: false } : item
+        ),
+      };
     }
     default:
       return state;

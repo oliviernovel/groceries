@@ -1,0 +1,91 @@
+.add-screen {
+  position: relative;
+  z-index: 1;
+}
+
+.add-screen__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--bg-divider);
+  border-bottom: 1px solid var(--line-color);
+  position: sticky;
+  top: 56px;
+  z-index: 10;
+}
+
+.add-screen__back {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-mid);
+  padding: 4px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.add-screen__back:hover {
+  color: var(--orange);
+}
+
+.add-screen__input {
+  flex: 1;
+  font-family: var(--font-hand);
+  font-size: 22px;
+  border: none;
+  background: transparent;
+  color: var(--text-dark);
+  outline: none;
+}
+
+.add-screen__input::placeholder {
+  color: var(--text-placeholder);
+}
+
+.add-screen__list {
+  list-style: none;
+}
+
+/* AddItemRow styles */
+.add-item-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--line-color);
+}
+
+.add-item-row__name {
+  flex: 1;
+  font-family: var(--font-hand);
+  font-size: 24px;
+  color: var(--text-dark);
+}
+
+.add-item-row__name em {
+  font-style: italic;
+  color: var(--text-mid);
+}
+
+.add-item-row__btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--text-light);
+  background: transparent;
+  color: var(--text-light);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.add-item-row__btn--active {
+  border-color: #4caf50;
+  color: #4caf50;
+}
