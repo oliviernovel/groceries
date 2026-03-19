@@ -1,6 +1,6 @@
 # Grocery List App — Project State
 
-## Current phase: Phase 3 complete (Main screen — To Buy list)
+## Current phase: Phase 4 complete (Main screen — Purchased list)
 
 ## Stack
 - React 19 + TypeScript + Vite
@@ -30,29 +30,33 @@ src/
       frequency.test.ts         -- 16 tests (all passing)
   store/
     storage.ts                  -- GroceryState type, saveState(), loadState(), seedData()
-    grocery-reducer.ts          -- groceryReducer + GroceryAction type (CHECK_ITEM, UNCHECK_ITEM stubs for rest)
+    grocery-reducer.ts          -- groceryReducer + GroceryAction type (CHECK_ITEM, UNCHECK_ITEM, DELETE_ITEM, SET_SORT_MODE; stubs for rest)
     grocery-context.tsx         -- GroceryProvider, useGroceries hook
     __tests__/
-      grocery-reducer.test.ts   -- 7 tests (all passing)
+      grocery-reducer.test.ts   -- 16 tests (all passing)
       storage.test.ts           -- 6 tests (all passing)
   components/
     Header.tsx / Header.css     -- Sticky orange header
-    SectionHeader.tsx           -- "To Buy (N)" divider
+    SectionHeader.tsx           -- "To Buy (N)" / "Purchased (N)" divider
     BuyItem.tsx                 -- Unchecked item (checkbox + name + c/Nd badge)
     BuyList.tsx                 -- Sorted to-buy list + empty state
-  screens/
-    MainScreen.tsx / MainScreen.css  -- To Buy section (purchased section coming in Phase 4)
+    PurchasedItem.tsx           -- Checked item (checkbox + name + c/Nd badge + delete btn)
+    PurchasedList.tsx           -- Sort toggle (frequency/alphabetical) + purchased items + empty state
     __tests__/
-      MainScreen.test.tsx       -- 5 tests (all passing)
+      PurchasedList.test.tsx    -- 5 tests (all passing)
+  screens/
+    MainScreen.tsx / MainScreen.css  -- To Buy + Purchased sections
+    __tests__/
+      MainScreen.test.tsx       -- 11 tests (all passing)
 ```
 
-## What's next: Phase 4
-- Purchased list: DELETE_ITEM, SET_SORT_MODE actions
-- Components: PurchasedItem, PurchasedList
-- Add purchased section to MainScreen
-- Seed data should include already-purchased items
+## What's next: Phase 5
+- FAB opens add screen
+- CREATE_AND_ADD, ADD_TO_BUY actions in the reducer
+- Components: Fab, AddItemRow, AddScreen
+- Remove seed data; empty initial state if no localStorage data
 
 ## Running
-- `pnpm dev` — dev server (shows To Buy list with seed data)
-- `pnpm test` — run all tests with Vitest (35 passing)
+- `pnpm dev` — dev server (shows To Buy + Purchased lists with seed data)
+- `pnpm test` — run all tests with Vitest (51 passing)
 - `pnpm build` — production build

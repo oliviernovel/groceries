@@ -36,6 +36,15 @@ export function groceryReducer(state: GroceryState, action: GroceryAction): Groc
         ),
       };
     }
+    case 'DELETE_ITEM': {
+      return {
+        ...state,
+        items: state.items.filter(item => item.id !== action.id),
+      };
+    }
+    case 'SET_SORT_MODE': {
+      return { ...state, sortMode: action.mode };
+    }
     default:
       return state;
   }

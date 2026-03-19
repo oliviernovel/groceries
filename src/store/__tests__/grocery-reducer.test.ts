@@ -74,3 +74,46 @@ describe('UNCHECK_ITEM', () => {
     expect(next.items[1]).toEqual(item2);
   });
 });
+
+describe('DELETE_ITEM', () => {
+  it('removes the item from the list', () => {
+    const state = makeState([makeItem({ id: '1' }), makeItem({ id: '2', name: 'Eggs' })]);
+    const next = groceryReducer(state, { type: 'DELETE_ITEM', id: '1' });
+    expect(next.items).toHaveLength(1);
+    expect(next.items[0].id).toBe('2');
+  });
+
+  it('does not modify other items', () => {
+    const item2 = makeItem({ id: '2', name: 'Eggs' });
+    const state = makeState([makeItem({ id: '1' }), item2]);
+    const next = groceryReducer(state, { type: 'DELETE_ITEM', id: '1' });
+    expect(next.items[0]).toEqual(item2);
+  });
+
+  it('handles deleting a non-existent id gracefully', () => {
+    const state = makeState([makeItem({ id: '1' })]);
+    const next = groceryReducer(state, { type: 'DELETE_ITEM', id: 'nope' });
+    expect(next.items).toHaveLength(1);
+  });
+});
+
+describe('SET_SORT_MODE', () => {
+  it('sets sortMode to alphabetical', () => {
+    const state = makeState([]);
+    const next = groceryReducer(state, { type: 'SET_SORT_MODE', mode: 'alphabetical' });
+    expect(next.sortMode).toBe('alphabetical');
+  });
+
+  it('sets sortMode to frequency', () => {
+    const state = { ...makeState([]), sortMode: 'alphabetical' as const };
+    const next = groceryReducer(state, { type: 'SET_SORT_MODE', mode: 'frequency' });
+    expect(next.sortMode).toBe('frequency');
+  });
+
+  it('does not modify items', () => {
+    const items = [makeItem({ id: '1' })];
+    const state = makeState(items);
+    const next = groceryReducer(state, { type: 'SET_SORT_MODE', mode: 'alphabetical' });
+    expect(next.items).toEqual(items);
+  });
+});

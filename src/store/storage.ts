@@ -80,5 +80,26 @@ export function seedData(): GroceryItem[] {
       purchaseOrder: 6,
       bought: false,
     },
+    {
+      id: 'seed-8',
+      name: 'Yogurt',
+      purchaseHistory: [now - 2 * MS_PER_DAY, now - 9 * MS_PER_DAY, now - 16 * MS_PER_DAY],
+      purchaseOrder: 7,
+      bought: true,
+    },
+    {
+      id: 'seed-9',
+      name: 'Orange Juice',
+      purchaseHistory: [now - 4 * MS_PER_DAY, now - 18 * MS_PER_DAY],
+      purchaseOrder: 8,
+      bought: true,
+    },
+    {
+      id: 'seed-10',
+      name: 'Pasta',
+      purchaseHistory: [now - 12 * MS_PER_DAY],
+      purchaseOrder: 9,
+      bought: true,
+    },
   ];
 }

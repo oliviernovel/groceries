@@ -36,9 +36,8 @@ describe('MainScreen', () => {
     renderWithItems([
       { id: '1', name: 'Milk', purchaseHistory: [], purchaseOrder: 0, bought: false },
     ]);
-    expect(screen.getByText('Milk')).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('checkbox'));
-    expect(screen.queryByText('Milk')).not.toBeInTheDocument();
+    fireEvent.click(screen.getByLabelText(/Mark Milk as purchased/i));
+    expect(screen.queryByLabelText(/Mark Milk as purchased/i)).not.toBeInTheDocument();
   });
 
   it('shows empty state when no items to buy', () => {
@@ -60,8 +59,8 @@ describe('MainScreen', () => {
       { id: '1', name: 'Milk', purchaseHistory: [], purchaseOrder: 0, bought: false },
       { id: '2', name: 'Eggs', purchaseHistory: [], purchaseOrder: 1, bought: true },
     ]);
-    expect(screen.getByText('Milk')).toBeInTheDocument();
-    expect(screen.queryByText('Eggs')).not.toBeInTheDocument();
+    expect(screen.getByLabelText(/Mark Milk as purchased/i)).toBeInTheDocument();
+    expect(screen.queryByLabelText(/Mark Eggs as purchased/i)).not.toBeInTheDocument();
   });
 
   it('shows c/Nd badge when item has 2+ purchases', () => {
@@ -77,5 +76,45 @@ describe('MainScreen', () => {
       },
     ]);
     expect(screen.getByText(/^c\/\d+d$/)).toBeInTheDocument();
+  });
+
+  it('renders purchased items', () => {
+    renderWithItems([
+      { id: '1', name: 'Milk', purchaseHistory: [], purchaseOrder: 0, bought: true },
+    ]);
+    expect(screen.getByText('Milk')).toBeInTheDocument();
+    expect(screen.getByLabelText(/Mark Milk as not purchased/i)).toBeInTheDocument();
+  });
+
+  it('unchecking a purchased item moves it to to-buy', () => {
+    renderWithItems([
+      { id: '1', name: 'Milk', purchaseHistory: [], purchaseOrder: 0, bought: true },
+    ]);
+    fireEvent.click(screen.getByLabelText(/Mark Milk as not purchased/i));
+    expect(screen.getByLabelText(/Mark Milk as purchased/i)).toBeInTheDocument();
+  });
+
+  it('deleting a purchased item removes it permanently', () => {
+    renderWithItems([
+      { id: '1', name: 'Milk', purchaseHistory: [], purchaseOrder: 0, bought: true },
+    ]);
+    fireEvent.click(screen.getByLabelText(/Delete Milk/i));
+    expect(screen.queryByText('Milk')).not.toBeInTheDocument();
+  });
+
+  it('shows empty state when no purchased items', () => {
+    renderWithItems([
+      { id: '1', name: 'Milk', purchaseHistory: [], purchaseOrder: 0, bought: false },
+    ]);
+    expect(screen.getByText(/Nothing purchased yet/i)).toBeInTheDocument();
+  });
+
+  it('shows Purchased section header with item count', () => {
+    renderWithItems([
+      { id: '1', name: 'Milk', purchaseHistory: [], purchaseOrder: 0, bought: true },
+      { id: '2', name: 'Eggs', purchaseHistory: [], purchaseOrder: 1, bought: true },
+    ]);
+    expect(screen.getByText('Purchased')).toBeInTheDocument();
+    expect(screen.getByText('(2)')).toBeInTheDocument();
   });
 });
