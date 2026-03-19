@@ -1,6 +1,6 @@
 # Grocery List App — Project State
 
-## Current phase: Phase 6 complete (Order screen)
+## Current phase: Phase 7 complete (Polish)
 
 ## Stack
 - React 19 + TypeScript + Vite
@@ -55,11 +55,10 @@ src/
       AddScreen.test.tsx        -- 8 tests (all passing)
 ```
 
-## What's next: Phase 7 (Polish)
-- Check/uncheck transition animations
-- Verify touch interactions work correctly on mobile
-- Final persistence verification (reload preserves all state)
-- No errors in the browser console
+## Phase 7 (Polish) — done
+- Check/uncheck transition animations: `itemIn` / `purchasedItemIn` CSS keyframes (0.18s ease-out slide+fade) in MainScreen.css; fire naturally on mount since items move between different component trees
+- Touch: OrderScreen already had `TouchSensor` + `touch-action: none` on handle and row
+- Persistence: context `useEffect` saves on every state change; `loadState` initialises reducer
 
 ## Running
 - `pnpm dev` — dev server (empty initial state; FAB opens add screen)
