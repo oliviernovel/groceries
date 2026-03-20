@@ -155,8 +155,6 @@
   flex: 1;
   font-family: var(--font-hand);
   font-size: 24px;
-  color: var(--text-mid);
-  text-decoration: line-through;
 }
 
 .purchased-item__badge {

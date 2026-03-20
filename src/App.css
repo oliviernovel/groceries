@@ -12,8 +12,8 @@
   --text-placeholder: #c5b8a8;
   --badge-bg: #ffd6cc;
   --badge-text: #c8442b;
-  --font-hand: 'Caveat', cursive;
-  --font-ui: 'Nunito', sans-serif;
+  --font-hand: "Caveat", cursive;
+  --font-ui: "Nunito", sans-serif;
 }
 
 /* Reset */
@@ -45,19 +45,13 @@ body {
 
 /* Notebook line effect */
 .app::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 420px;
   height: 100vh;
-  background-image: repeating-linear-gradient(
-    transparent,
-    transparent 31px,
-    var(--line-color) 31px,
-    var(--line-color) 32px
-  );
   background-position: 0 72px;
   pointer-events: none;
   z-index: 0;
