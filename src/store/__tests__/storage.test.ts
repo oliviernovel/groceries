@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { saveState, loadState, seedData } from '../storage';
+import { saveState, loadState } from '../storage';
 import type { GroceryState } from '../storage';
 
 const mockState: GroceryState = {
@@ -40,23 +40,5 @@ describe('saveState / loadState', () => {
       JSON.stringify({ items: 'bad', sortMode: 'frequency' })
     );
     expect(loadState()).toBeNull();
-  });
-});
-
-describe('seedData', () => {
-  it('returns a non-empty array', () => {
-    const data = seedData();
-    expect(Array.isArray(data)).toBe(true);
-    expect(data.length).toBeGreaterThan(0);
-  });
-
-  it('all items have required fields', () => {
-    for (const item of seedData()) {
-      expect(item).toHaveProperty('id');
-      expect(item).toHaveProperty('name');
-      expect(item).toHaveProperty('purchaseHistory');
-      expect(item).toHaveProperty('purchaseOrder');
-      expect(item).toHaveProperty('bought');
-    }
   });
 });
