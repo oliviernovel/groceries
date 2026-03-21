@@ -22,7 +22,6 @@ export function InlineEdit({
   useEffect(() => {
     if (editing) {
       inputRef.current?.focus();
-      inputRef.current?.select();
     }
   }, [editing]);
 
