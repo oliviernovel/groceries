@@ -62,7 +62,7 @@ export function Header({ title = 'Grocery List', onOrderClick, onAboutClick }: H
                   className="app-header__dropdown-item"
                   onClick={handleOrderClick}
                 >
-                  Order
+                  Arrange items
                 </button>
               )}
               {onAboutClick && (

@@ -98,7 +98,7 @@ export function OrderScreen({ onClose }: OrderScreenProps) {
         >
           ←
         </button>
-        <span className="order-screen__title">Order</span>
+        <span className="order-screen__title">Arrange items</span>
       </div>
 
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
