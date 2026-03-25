@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.3](https://github.com/camilosw/groceries/compare/v1.1.2...v1.1.3) (2026-03-25)
+
+
+### Bug Fixes
+
+* change Order to Arrange items ([1953ea1](https://github.com/camilosw/groceries/commit/1953ea1885315a32eea86453c1317f269c014570))
+
 ## [1.1.2](https://github.com/camilosw/groceries/compare/v1.1.1...v1.1.2) (2026-03-25)
 
 
