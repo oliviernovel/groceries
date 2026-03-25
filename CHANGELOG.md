@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.2](https://github.com/camilosw/groceries/compare/v1.1.1...v1.1.2) (2026-03-25)
+
+
+### Bug Fixes
+
+* add bottom padding to avoid blocking items by the Add button ([ec60ffd](https://github.com/camilosw/groceries/commit/ec60ffd99e7766b26a543e7d493517fcc8e85b23))
+
 ## [1.1.1](https://github.com/camilosw/groceries/compare/v1.1.0...v1.1.1) (2026-03-24)
 
 
