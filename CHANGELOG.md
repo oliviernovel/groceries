@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.4.0](https://github.com/camilosw/groceries/compare/v1.3.0...v1.4.0) (2026-03-31)
+
+
+### Features
+
+* add "Restore to Purchased" option to To Buy item menu ([#7](https://github.com/camilosw/groceries/issues/7)) ([fafc4ce](https://github.com/camilosw/groceries/commit/fafc4ceef348eadeffeb414d1f5a35b24e91ca9f))
+
 ## [1.3.0](https://github.com/camilosw/groceries/compare/v1.2.3...v1.3.0) (2026-03-31)
 
 
